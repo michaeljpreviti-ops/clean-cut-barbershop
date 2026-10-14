@@ -4,7 +4,7 @@ The website for Clean Cut Barber Shop — 430 NW 5th Ave, Gainesville, FL 32601 
 old Wix site. Static HTML, CSS and vanilla JavaScript. No build step, no dependencies,
 no framework. Deployed on Vercel.
 
-**Live:** https://cleancutgainesville.vercel.app
+**Live:** https://clean-cut-barbershop.vercel.app
 
 ## What's in it
 
