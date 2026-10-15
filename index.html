@@ -47,7 +47,7 @@
 </script>
 </head>
 <body>
-<a class="skip" href="#book">Skip to booking</a>
+<a class="skip" href="#main">Skip to main content</a>
 
 <header class="site-head" id="top">
   <div class="wrap head-inner">
@@ -82,6 +82,7 @@
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#visit">Visit</a>
+      <a href="/accessibility">Accessibility</a>
     </nav>
 
     <div class="head-cta">
@@ -91,12 +92,12 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- ============ HERO ============ -->
   <section class="hero">
     <picture class="hero-img">
       <source media="(max-width: 700px)" srcset="/images/shop-interior-sm.jpg">
-      <img src="/images/shop-interior.jpg" alt="Inside Clean Cut Barber Shop: black-and-white checkerboard floor, a row of barber chairs and mirrors." width="2200" height="561" fetchpriority="high">
+      <img src="/images/shop-interior.jpg" alt="Inside Clean Cut: barber chairs and mirrors along a checkerboard floor." width="2200" height="561" fetchpriority="high">
     </picture>
     <div class="hero-shade"></div>
     <div class="wrap hero-body">
@@ -160,10 +161,10 @@
         </div>
       </div>
 
-      <aside class="special">
+      <div class="special">
         <span class="special-tag">Wednesday special</span>
         <p><strong>$10 fades and $8 regular cuts</strong> with a student ID. Bring the card, save the cash.</p>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -174,14 +175,20 @@
       <h2 class="h2">Three taps and you're in the chair.</h2>
       <p class="section-lede">Pick what you want, pick a time, and send it straight to the shop. We'll text or call you back to confirm &mdash; usually within the hour we're open.</p>
 
+      <noscript>
+        <p class="noscript-note">The booking form needs JavaScript. To book without it, call
+        <a href="tel:+13523764489">352-376-4489</a> during shop hours, or walk in &mdash;
+        430 NW 5th Ave, Gainesville.</p>
+      </noscript>
+
       <form class="booking" id="booking" novalidate>
         <ol class="steps" id="steps">
           <li class="step is-active" data-step="1">
-            <div class="step-head"><span class="step-num">1</span><h3>What are you getting?</h3></div>
-            <div class="step-body">
+            <div class="step-head"><span class="step-num" aria-hidden="true">1</span><h3><button type="button" class="step-toggle" aria-expanded="false" aria-controls="step-body-1">What are you getting?</button></h3></div>
+            <div class="step-body" id="step-body-1">
               <fieldset>
                 <legend>Choose a cut or service</legend>
-                <div class="chips" id="service-chips" role="radiogroup" aria-label="Choose a cut or service"></div>
+                <div class="chips" id="service-chips"></div>
               </fieldset>
               <fieldset class="addons">
                 <legend>Add on <span class="opt">optional</span></legend>
@@ -192,15 +199,15 @@
           </li>
 
           <li class="step" data-step="2">
-            <div class="step-head"><span class="step-num">2</span><h3>When works for you?</h3></div>
-            <div class="step-body">
+            <div class="step-head"><span class="step-num" aria-hidden="true">2</span><h3><button type="button" class="step-toggle" aria-expanded="false" aria-controls="step-body-2">When works for you?</button></h3></div>
+            <div class="step-body" id="step-body-2">
               <fieldset>
                 <legend>Day</legend>
-                <div class="days" id="day-chips" role="radiogroup" aria-label="Choose a day"></div>
+                <div class="days" id="day-chips"></div>
               </fieldset>
               <fieldset>
                 <legend>Time <span class="opt" id="slot-note"></span></legend>
-                <div class="slots" id="time-slots" role="radiogroup" aria-label="Choose a time"></div>
+                <div class="slots" id="time-slots" aria-live="polite"></div>
               </fieldset>
               <div class="step-nav">
                 <button type="button" class="btn btn-quiet btn-back" data-back="1">Back</button>
@@ -210,18 +217,18 @@
           </li>
 
           <li class="step" data-step="3">
-            <div class="step-head"><span class="step-num">3</span><h3>Who should we ask for?</h3></div>
-            <div class="step-body">
+            <div class="step-head"><span class="step-num" aria-hidden="true">3</span><h3><button type="button" class="step-toggle" aria-expanded="false" aria-controls="step-body-3">Who should we ask for?</button></h3></div>
+            <div class="step-body" id="step-body-3">
               <div class="fields">
                 <p class="field">
                   <label for="f-name">Your name</label>
-                  <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="First and last">
-                  <span class="err" data-err="name"></span>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="First and last" aria-describedby="err-name">
+                  <span class="err" id="err-name" data-err="name" role="alert"></span>
                 </p>
                 <p class="field">
                   <label for="f-phone">Mobile number</label>
-                  <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(352) 555-0123">
-                  <span class="err" data-err="phone"></span>
+                  <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(352) 555-0123" aria-describedby="err-phone">
+                  <span class="err" id="err-phone" data-err="phone" role="alert"></span>
                 </p>
                 <p class="field field-wide">
                   <label for="f-barber">Barber <span class="opt">optional</span></label>
@@ -240,7 +247,7 @@
           </li>
         </ol>
 
-        <aside class="summary" id="summary" aria-live="polite">
+        <div class="summary" id="summary" aria-live="polite">
           <h3>Your request</h3>
           <dl id="summary-list">
             <div><dt>Service</dt><dd data-sum="service">&mdash;</dd></div>
@@ -250,7 +257,7 @@
           </dl>
           <p class="summary-total"><span>Estimated total</span><b data-sum="total">&mdash;</b></p>
           <p class="summary-fine">Cash and card accepted in shop. Prices are the shop's posted rates &mdash; final price depends on the cut.</p>
-        </aside>
+        </div>
       </form>
 
       <!-- Confirmation / send panel -->
@@ -259,8 +266,8 @@
         <p class="sendbox-lede">Here's exactly what goes to the shop. Pick how you'd like to send it &mdash; the message comes pre-written.</p>
         <pre class="sendbox-msg" id="send-preview"></pre>
         <div class="sendbox-actions">
-          <a class="btn btn-primary btn-lg" id="send-sms" href="#">Send as a text</a>
-          <a class="btn btn-outline btn-lg" id="send-email" href="#">Send as an email</a>
+          <a class="btn btn-primary btn-lg" id="send-sms" href="sms:+13523764489">Send as a text</a>
+          <a class="btn btn-outline btn-lg" id="send-email" href="mailto:" hidden>Send as an email</a>
           <button type="button" class="btn btn-quiet" id="send-copy">Copy details</button>
         </div>
         <p class="sendbox-fine">This sends a <strong>request</strong>, not a locked-in appointment &mdash; Clean Cut replies to confirm. In a hurry? <a href="tel:+13523764489">Call 352-376-4489</a> or just walk in.</p>
@@ -284,7 +291,8 @@
           <p>&ldquo;This is where the Florida Gators get their hair cut. They are very good at cutting your hair. Yes, the line is long some days but it is well worth it. Tell them what you want and they will give it to you! Make sure you get there early unless you want a great story from them.&rdquo;</p>
         </blockquote>
         <figcaption>
-          <span class="stars" aria-label="Five out of five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="sr-only">Rated 5 out of 5.</span>
           Google review
         </figcaption>
       </figure>
@@ -348,10 +356,10 @@
   <p class="foot-fine">&copy; <span id="year">2026</span> Clean Cut Barber Shop. Cutting hair on 5th Avenue since 1993.</p>
 </footer>
 
-<div class="dock" aria-hidden="false">
+<nav class="dock" aria-label="Quick actions">
   <a class="btn btn-outline" href="tel:+13523764489">Call</a>
   <a class="btn btn-primary" href="#book">Book a chair</a>
-</div>
+</nav>
 
 <script src="/app.js" defer></script>
 </body>

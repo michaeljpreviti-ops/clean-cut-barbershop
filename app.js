@@ -256,6 +256,8 @@ function goToStep(n, focus = true) {
     const i = +step.dataset.step;
     step.classList.toggle('is-active', i === n);
     step.classList.toggle('is-done', i < n);
+    const toggle = step.querySelector('.step-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', String(i === n));
   });
   const active = $('.step[data-step="' + n + '"]');
   if (active && focus) {
@@ -285,6 +287,7 @@ function flash(sel, msg) {
   if (!note) {
     note = document.createElement('span');
     note.className = 'err';
+    note.setAttribute('role', 'alert');
     el.parentElement.appendChild(note);
   }
   note.textContent = msg;
@@ -338,6 +341,7 @@ function showSendBox(message) {
 
 /* ---------- wire up ---------- */
 function init() {
+  goToStep(1, false);
   renderStatus();
   renderServices();
   renderDays();
@@ -351,8 +355,8 @@ function init() {
   }));
   $$('.btn-back').forEach(b => b.addEventListener('click', () => goToStep(+b.dataset.back)));
 
-  $$('.step-head').forEach(head => head.addEventListener('click', () => {
-    const step = head.closest('.step');
+  $$('.step-toggle').forEach(btn => btn.addEventListener('click', () => {
+    const step = btn.closest('.step');
     if (!step.classList.contains('is-active')) goToStep(+step.dataset.step);
   }));
 

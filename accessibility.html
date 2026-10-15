@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility — Clean Cut Barber Shop</title>
+<meta name="description" content="How Clean Cut Barber Shop's website works for people with disabilities: the standard we follow, what we tested, what we fixed, and how to tell us about a problem.">
+<meta name="theme-color" content="#101010">
+<link rel="canonical" href="https://clean-cut-barbershop.vercel.app/accessibility">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="/" aria-label="Clean Cut Barber Shop, home">
+      <svg class="pole" viewBox="0 0 24 64" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8b8b8b"/><stop offset=".45" stop-color="#f2f2f2"/><stop offset="1" stop-color="#777"/>
+          </linearGradient>
+          <clipPath id="tube"><rect x="6" y="14" width="12" height="36" rx="6"/></clipPath>
+        </defs>
+        <circle cx="12" cy="6" r="5" fill="url(#chrome)"/>
+        <rect x="4" y="11" width="16" height="4" rx="2" fill="url(#chrome)"/>
+        <rect x="6" y="14" width="12" height="36" fill="#fff"/>
+        <g clip-path="url(#tube)" class="stripes">
+          <g>
+            <path d="M-14 14 L2 14 L18 50 L2 50 Z" fill="#c1272d"/>
+            <path d="M-2 14 L14 14 L30 50 L14 50 Z" fill="#1b3a6b"/>
+            <path d="M-26 14 L-10 14 L6 50 L-10 50 Z" fill="#1b3a6b"/>
+          </g>
+        </g>
+        <rect x="4" y="49" width="16" height="4" rx="2" fill="url(#chrome)"/>
+        <circle cx="12" cy="58" r="5" fill="url(#chrome)"/>
+      </svg>
+      <span class="brand-text">
+        <strong>Clean Cut</strong>
+        <small>Barber Shop &amp; Shoe Shine</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#services">Services</a>
+      <a href="/#about">About</a>
+      <a href="/#visit">Visit</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-ghost" href="tel:+13523764489"><span aria-hidden="true">&#9742;</span> 352-376-4489</a>
+      <a class="btn btn-primary" href="/#book">Book a chair</a>
+    </div>
+  </div>
+</header>
+
+<main class="doc" id="main">
+  <div class="doc-wrap">
+    <a class="doc-back" href="/">&larr; Back to the shop</a>
+    <p class="eyebrow">Accessibility</p>
+    <h1>Accessibility at Clean Cut</h1>
+    <p class="doc-lede">We want anyone who needs a haircut to be able to use this website &mdash; including
+    people who browse with a screen reader, navigate by keyboard, enlarge text, or need strong color contrast.
+    This page sets out exactly what we have done, what we tested, and what we know is still imperfect.</p>
+
+    <dl class="doc-meta">
+      <div><dt>Standard targeted</dt><dd>WCAG 2.1 Level AA</dd></div>
+      <div><dt>Status</dt><dd>Substantially conformant</dd></div>
+      <div><dt>Last reviewed</dt><dd>15 October 2026</dd></div>
+      <div><dt>Applies to</dt><dd>clean-cut-barbershop.vercel.app</dd></div>
+    </dl>
+
+    <h2>The standard we follow</h2>
+    <p>The Americans with Disabilities Act does not itself contain a technical checklist for websites.
+    The U.S. Department of Justice's guidance on <a href="https://www.ada.gov/resources/web-guidance/" rel="noopener">web accessibility and the ADA</a>
+    points to the Web Content Accessibility Guidelines (WCAG) as the recognized measure, and in April 2024 the
+    Department adopted <strong>WCAG 2.1 Level AA</strong> as the binding standard for state and local government websites.</p>
+    <p>Clean Cut is a private business, so that government rule is not directly binding on us. We have
+    adopted WCAG 2.1 Level AA anyway, because it is the benchmark courts and the Department use when they
+    assess whether a business is offering its goods and services on an equal basis.</p>
+
+    <h2>Going down the ada.gov list</h2>
+    <p>The Department's guidance names six common barriers. Here is each one, in its own words, and what
+    we did about it.</p>
+
+    <ul class="check">
+      <li>
+        <span class="mark" aria-hidden="true">&#10003;</span>
+        <div>
+          <b>&ldquo;Poor color contrast&rdquo;</b>
+          <span>Every piece of text on the site was measured against the color behind it. All of it now
+          meets or beats the 4.5:1 ratio AA requires for normal text, and 3:1 for large text. The headline
+          over the shop photograph was measured pixel-by-pixel against the actual image &mdash; it reaches
+          8:1, and the smallest text over that photo reaches 5.6:1.</span>
+        </div>
+      </li>
+      <li>
+        <span class="mark" aria-hidden="true">&#10003;</span>
+        <div>
+          <b>&ldquo;Use of color alone to give information&rdquo;</b>
+          <span>Nothing on this site is communicated by color on its own. When you pick a service or a
+          time, the choice is shown by a tick appearing in a box &mdash; a change of shape, not just a
+          change of color. Today's row in the opening hours is marked with bold text as well as a dot.
+          Form problems are always explained in words, never signaled by a red border alone.</span>
+        </div>
+      </li>
+      <li>
+        <span class="mark" aria-hidden="true">&#10003;</span>
+        <div>
+          <b>&ldquo;Lack of text alternatives (&lsquo;alt text&rsquo;) on images&rdquo;</b>
+          <span>The photograph of the shop carries a short written description. The barber-pole logo and
+          the decorative pattern are marked so screen readers skip them instead of reading out noise.</span>
+        </div>
+      </li>
+      <li>
+        <span class="mark na" aria-hidden="true">&ndash;</span>
+        <div>
+          <b>&ldquo;No captions on videos&rdquo;</b>
+          <span>Not applicable &mdash; there is no video or audio anywhere on this site. If we ever add
+          any, it will ship with accurate captions that identify who is speaking.</span>
+        </div>
+      </li>
+      <li>
+        <span class="mark" aria-hidden="true">&#10003;</span>
+        <div>
+          <b>&ldquo;Inaccessible online forms&rdquo;</b>
+          <span>Every field in the booking form has a real label attached to it, is grouped under a
+          heading that explains what the group is for, and fills in from your device's saved contact
+          details. If something is wrong, the form says what is wrong and how to fix it in plain words
+          &mdash; &ldquo;Enter a 10-digit mobile number so we can confirm&rdquo; &mdash; and announces that
+          message to screen readers rather than only showing it.</span>
+        </div>
+      </li>
+      <li>
+        <span class="mark" aria-hidden="true">&#10003;</span>
+        <div>
+          <b>&ldquo;Mouse-only navigation (lack of keyboard navigation)&rdquo;</b>
+          <span>The whole site, booking included, can be operated from the keyboard alone. Every control
+          shows a clear gold outline when it has focus, a &ldquo;skip to main content&rdquo; link lets you
+          jump past the header, and the three booking steps are real buttons you can reach with Tab and
+          activate with Enter or Space.</span>
+        </div>
+      </li>
+    </ul>
+
+    <p>The guidance makes four further recommendations, which we have also followed: text resizes and the
+    page zooms without breaking, the page is built out of proper headings so a screen reader can jump
+    between sections, the layout reflows down to a 320-pixel-wide screen without side-to-side scrolling,
+    and &mdash; as set out at the bottom of this page &mdash; there is a way to tell us when something is wrong.</p>
+
+    <h2>How this was tested</h2>
+    <p>The Department's guidance warns that automated checkers alone are not enough, and that a clean
+    report does not prove a site is accessible. So the site was checked three ways:</p>
+    <ul>
+      <li><strong>WAVE</strong> (WebAIM's evaluation tool) &mdash; reported <strong>0 errors</strong>.</li>
+      <li><strong>axe-core 4.10.2</strong>, run against WCAG 2.0 A/AA, 2.1 A/AA, 2.2 AA and best-practice
+      rules, on the page at rest and again with the booking form filled in and submitted &mdash;
+      <strong>0 violations</strong>, 48 checks passing.</li>
+      <li><strong>Checked by hand</strong> &mdash; contrast ratios calculated directly from the color
+      values, including sampling the actual pixels of the shop photograph behind the headline; the booking
+      flow completed using only the keyboard; heading structure, landmarks and focus order reviewed; layout
+      tested at 320, 390, 768, 1024 and 1440 pixels wide, and again with text spacing increased.</li>
+    </ul>
+    <p>Eight issues were found and fixed in that process, including four contrast failures, selection
+    states that relied on color alone, booking-step headings that could not be reached by keyboard, and
+    a header that forced sideways scrolling on a narrow phone.</p>
+
+    <h2>What we know is still imperfect</h2>
+    <p>We would rather say this plainly than claim perfection:</p>
+    <ul>
+      <li><strong>No one has tested this site with an actual screen reader yet.</strong> The structure,
+      labels and announcements were verified in code and with automated tools, but that is not the same as
+      a person using JAWS, NVDA or VoiceOver end to end. That testing is the clear next step.</li>
+      <li><strong>No disabled users have reviewed it.</strong> Automated tools and a careful developer
+      catch a great deal, but not everything that makes a site genuinely usable.</li>
+      <li><strong>The booking form needs JavaScript.</strong> If JavaScript is switched off or fails to
+      load, the form is replaced by a message giving the shop's phone number and address instead.</li>
+      <li><strong>The stripes on the barber-pole logo turn continuously.</strong> They carry no
+      information, and they hold still for anyone whose device asks for reduced motion, but there is no
+      on-page button to stop them.</li>
+      <li><strong>One link is smaller than the 24-pixel touch target</strong> WCAG 2.2 suggests &mdash; the
+      phone number inside the sentence in the footer. It qualifies for that rule's exception for links
+      inside a line of text, and the same number appears as a large button elsewhere on every page.</li>
+    </ul>
+
+    <div class="callout">
+      <h2>Found a problem? Tell us.</h2>
+      <p>If any part of this website gets in your way &mdash; or if you need to book a cut in a different
+      way &mdash; contact the shop and we will sort it out and fix the site. Tell us the page you were on
+      and what went wrong, and we will reply as quickly as we can.</p>
+      <div class="contact-rows">
+        <a class="btn btn-primary" href="tel:+13523764489">Call 352-376-4489</a>
+        <a class="btn btn-outline" href="https://maps.google.com/?q=430+NW+5th+Ave,+Gainesville,+FL+32601" target="_blank" rel="noopener">430 NW 5th Ave, Gainesville</a>
+      </div>
+    </div>
+
+    <h2>Technical details</h2>
+    <p>This site is built as plain HTML, CSS and JavaScript with no framework. It relies on standard,
+    well-supported web features and is designed to work in current versions of Chrome, Safari, Firefox and
+    Edge, on desktop and on phones. It does not use an accessibility overlay or widget &mdash; the
+    Department's guidance cautions against treating those as a fix, so the accessibility work is built into
+    the page itself.</p>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <p class="foot-brand">Clean Cut Barber Shop <span>&amp; Shoe Shine</span></p>
+      <p class="foot-addr">430 NW 5th Ave &middot; Gainesville, FL 32601 &middot; <a href="tel:+13523764489">352-376-4489</a></p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="/#services">Services</a>
+      <a href="/#book">Book</a>
+      <a href="/#about">About</a>
+      <a href="/#visit">Visit</a>
+      <a href="/accessibility" aria-current="page">Accessibility</a>
+    </nav>
+  </div>
+  <p class="foot-fine">&copy; <span id="year">2026</span> Clean Cut Barber Shop. Cutting hair on 5th Avenue since 1993.</p>
+</footer>
+
+<script>
+  var y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+</script>
+</body>
+</html>
